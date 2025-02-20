@@ -10,7 +10,7 @@
 */
 int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     * returnSize = numsSize;
-    int* result = malloc(sizeof(int) * numsSize);
+    int* result = (int*)malloc(sizeof(int) * numsSize);
     int i = 0, j = numsSize - 1, index = numsSize - 1;
     while(i <= j){
         if(nums[i] * nums[i] < nums[j] * nums[j]){

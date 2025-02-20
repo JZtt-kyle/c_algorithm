@@ -9,6 +9,32 @@
  * 网址:https://leetcode.cn/problems/fruit-into-baskets/description/
 */
 
+/* 
+ * 仍然是滑动窗口的问题
+ * 本题重点仍是窗口边界的变动，也就是左边界在什么时候变动，显然当子数组中有三种水果时就应该修改左窗口。可以用kinds变量记录当前的水果种类数。接下来的工作就围绕kinds的变动来进行，当出现一个之前没有出现过的种类时，kinds+1，当kinds=3时，变动左窗口。
+*/
+
 int totalFruit(int* fruits, int fruitsSize) {
-    int result = 0, i = 0;
+    int result = 0, i = 0, kinds = 0;
+    int* count = (int*)malloc(fruitsSize * sizeof(int));
+    for(int k =  0; k < fruitsSize; k++){
+        count[k] = 0;
+    }
+    for(int j = 0; j < fruitsSize; j++){
+        if(count[fruits[j]] == 0){
+            kinds++;
+        }
+        count[fruits[j]]++;
+       while(kinds > 2){
+            count[fruits[i]] --;
+            if(count[fruits[i]] == 0){
+                kinds--;
+            }
+            i++;
+       }
+       if(j - i + 1 > result){
+            result = j - i + 1;
+       } 
+    }
+    return result;
 }
