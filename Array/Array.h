@@ -7,5 +7,6 @@ int removeElement2(int* nums, int numsSize, int val);
 int* sortedSquares(int* nums, int numsSize, int* returnSize);
 int minSubArrayLen(int target, int* nums, int numsSize);
 int totalFruit(int* fruits, int fruitsSize);
+char* minWindow(char* s, char* t);
 
 #endif

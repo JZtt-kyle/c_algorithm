@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "array.h"
 
 int main (){
-    int nums[] = {0,1,2,2};
-    totalFruit(nums, 4);
+    char s[] = {"ADOBECODEBANC"};
+    char t[] = {"ABC"};
+    printf("%s",minWindow(s, t));
     return 0;
 }
