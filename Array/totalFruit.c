@@ -26,7 +26,7 @@ int totalFruit(int* fruits, int fruitsSize) {
         }
         count[fruits[j]]++;
        while(kinds > 2){
-            count[fruits[i]] --;
+            count[fruits[i]]--;
             if(count[fruits[i]] == 0){
                 kinds--;
             }

@@ -19,7 +19,7 @@ char* minWindow(char* s, char* t) {
     for(int k = 0; k < t_len; k++){
         count[t[k]]++;
     }
-    for(int j = 0; j < s_len; j++){g
+    for(int j = 0; j < s_len; j++){
         if(count[s[j]] > 0){
             length--;
         }
