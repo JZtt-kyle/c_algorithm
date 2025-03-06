@@ -1,5 +1,5 @@
 /* 
- * 题目: 两两交换链表中的节点
+ * 题目: 删除链表的倒数第N个节点
  * 功能描述: 给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点
  * 网址:https://leetcode.cn/problems/swap-nodes-in-pairs/description/
 */
