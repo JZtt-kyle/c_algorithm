@@ -6,13 +6,37 @@
 
 #include <iostream>
 #include <vector>
-#include <deque>
+#include <unordered_map>
+#include <queue>
 using namespace std;
 
 class Solution {
     public:
+
+        class mycomparison {
+            public:
+                bool operator()(const pair<int, int>& lhs, const pair<int, int>& rhs) {
+                    return lhs.second > rhs.second;
+                }
+            };
         vector<int> topKFrequent(vector<int>& nums, int k) {
-            
+            vector<int> res(k);
+            unordered_map<int, int> map;
+            for(int t : nums) {
+                map[t]++;
+            }
+            priority_queue<pair<int, int>, vector<pair<int, int>>, mycomparison> pri_q;
+            for(auto it = map.begin(); it != map.end(); it++) {
+                pri_q.push(*it);
+                if(pri_q.size() > k){
+                    pri_q.pop();
+                }
+            }
+            for (int i = k - 1; i >= 0; i--) {
+                res[i] = pri_q.top().first;
+                pri_q.pop();
+            }    
+            return res;
         }
     };
 
