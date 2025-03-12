@@ -5,6 +5,9 @@
 */
 
 #include <vector>
+#include <stack>
+#include <algorithm>
+using namespace std;
 
 struct TreeNode {
     int val;
@@ -15,9 +18,27 @@ struct TreeNode {
 
 class Solution {
     public:
-        vector<int> postorderTraversal(TreeNode* root) {
+        //递归法
+        vector<int> postorderTraversal1(TreeNode* root) {
             vector<int> res;
             postorder(root, res);
+            return res;
+        }
+        //迭代法
+        vector<int> postorderTraversal2(TreeNode* root) {
+            stack<TreeNode*> st;
+            vector<int> res;
+            if(!root) return res;
+            st.push(root);
+            while(!st.empty()) {
+                TreeNode* tmp = st.top();
+                st.pop();
+                res.push_back(tmp->val);
+                //后序遍历要在前序的基础上交换入栈顺序，最后再反转
+                if(tmp->left) st.push(tmp->left);
+                if(tmp->right) st.push(tmp->right);
+            }
+            reverse(res.begin(), res.end());
             return res;
         }
         void postorder(TreeNode* root, vector<int> &vec) {

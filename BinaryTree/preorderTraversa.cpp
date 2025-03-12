@@ -5,6 +5,8 @@
 */
 
 #include <vector>
+#include <stack>
+using namespace std;
 
 struct TreeNode {
     int val;
@@ -15,9 +17,26 @@ struct TreeNode {
 
 class Solution {
     public:
-        vector<int> preorderTraversal(TreeNode* root) {
+        //递归法
+        vector<int> preorderTraversal1(TreeNode* root) {
             vector<int> res;
             traver(root, res);
+            return res;
+        }
+        //迭代法
+        vector<int> preorderTraversal2(TreeNode* root) {
+            stack<TreeNode*> st;
+            vector<int> res;
+            if(!root) return res;
+            st.push(root);
+            while(!st.empty()) {
+                TreeNode* tmp = st.top();
+                st.pop();
+                res.push_back(tmp->val);
+                //先放右子树，再放左子树
+                if(tmp->right) st.push(tmp->right);
+                if(tmp->left) st.push(tmp->left);
+            }
             return res;
         }
 

@@ -5,6 +5,8 @@
 */
 
 #include <vector>
+#include <stack>
+using namespace std;
 
 struct TreeNode {
     int val;
@@ -15,9 +17,30 @@ struct TreeNode {
 
 class Solution {
     public:
-        vector<int> inorderTraversal(TreeNode* root) {
+        //递归法
+        vector<int> inorderTraversal1(TreeNode* root) {
             vector<int> res;
             inorder(root, res);
+            return res;
+        }
+        //迭代法
+        vector<int> inorderTraversal2(TreeNode* root) {
+            stack<TreeNode*> st;
+            vector<int> res;
+            if(!root) return res;
+            TreeNode* cur = root;
+            while(cur || !st.empty()) {
+                while(cur) {
+                    st.push(cur);
+                    cur = cur->left;
+                }
+
+                cur = st.top();
+                st.pop();
+                res.push_back(cur->val);
+
+                cur = cur->right;
+            }
             return res;
         }
         void inorder(TreeNode* root, vector<int> &vec) {
