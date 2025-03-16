@@ -4,7 +4,7 @@
  * 网址:https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/description/
 */
 
-
+#include <vector>
 
 using namespace std;
 
@@ -18,6 +18,26 @@ struct TreeNode {
 class Solution {
     public:
         TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
-            
+            if(postorder.size() == 0) return nullptr;
+
+            int rootVal = postorder[postorder.size() - 1];
+            TreeNode* root = new TreeNode(rootVal);
+
+            int index = 0;
+            for(; index < inorder.size(); index++) {
+                if(inorder[index] == rootVal) break;
+            }
+
+            vector<int> inleft(inorder.begin(), inorder.begin() + index);
+            vector<int> inright(inorder.begin() + index + 1, inorder.end());
+
+            vector<int> postleft(postorder.begin(), postorder.begin() + inleft.size());
+            vector<int> postright(postorder.begin() + postleft.size(), postorder.end() - 1);
+
+            root->left = buildTree(inleft, postleft);
+            root->right = buildTree(inright, postright);
+
+            return root;
+
         }
     };
