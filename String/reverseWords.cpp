@@ -13,25 +13,6 @@ using namespace std;
 class Solution {
     public:
         string reverseWords(string s) {
-            // int i = 0;
-            // while(i < s.size() && s[i] == ' ') i++;
-            // if(i != 0) s = s.substr(i);
-
-            // int length1 = s.size();
-            // i = length1 - 1;
-            // while(i >= 0 && s[i] == ' ') i--;
-            // if(i != length1 - 1) s = s.substr(0, i + 1);
-
-            
-            // int slow =0;
-            // int length2 = s.size();
-            // for(int fast = 0; fast < length2; fast++) {
-            //     if(s[fast] != ' ' || s[fast] != s[fast - 1]) {
-            //         s[slow++] = s[fast];
-            //     }
-            // }
-            // s = s.substr(0, slow);
-
             int slow = 0;
             for(int fast = 0; fast < s.size(); fast++) {
                 if(s[fast] != ' ') {

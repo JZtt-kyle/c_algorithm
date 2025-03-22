@@ -29,12 +29,5 @@ void numberToString(string s) {
             s[length2--] = s[length1--];
         }
     }
-    cout << s <<endl;
 }
 
-
-int main(){
-
-    numberToString("a1b1c1");
-    return 0;
-}
